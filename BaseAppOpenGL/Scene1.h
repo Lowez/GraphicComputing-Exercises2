@@ -1,12 +1,9 @@
 #pragma once
 #include "SceneBaseClass.h"
-#include "CShaderManager.h"
 #include "CTexture.h"
 #include "CTimer.h"
 #include "CTexto.h"
 #include "CCamera.h"
-#include "CModel_3DS.h"
-
 
 class CScene1 : public CSceneBaseClass
 {
@@ -14,7 +11,7 @@ public:
 	CScene1();
 	~CScene1(void);
 
-	
+
 	virtual void MouseMove(void);					// Tratamento de movimento do mouse
 	virtual void KeyPressed(void);					// Tratamento de teclas pressionadas
 	virtual void KeyDownPressed(WPARAM	wParam);	// Tratamento de teclas pressionadas
@@ -23,29 +20,20 @@ public:
 	void Draw3DSGrid(float width, float length);
 	void DrawAxis();
 
-	void DrawCube(float pX = 0.0f, float pY = 0.0f, float pZ = 0.0f,
-		float rX = 0.0f, float rY = 0.0f, float rZ = 0.0f, float angle = 0.0f,
-		float sX = 1.0f, float sY = 1.0f, float sZ = 1.0f,
-		int texID = -1);
-
-	void CreateSkyBox(float x, float y, float z,
-		float width, float height, float length,
-		CTexture* pTextures);
-
 private:
-	
+
 	bool	keys[256];		// Array usado para rotinas do teclado
 	bool	active;			// Window Active Flag Set To TRUE By Default
 	bool	fullscreen;		// Exibir janela em modo fullscreem (TRUE) ou em janela (FALSE)
-	
 
-	CCamera			*pCamera;	// Gerencia câmera OpenGL
+
+	CCamera* pCamera;	// Gerencia câmera OpenGL
 	float fDeltaY;				// Rotação da câmera OpenGL no eixo Y
 	float fDeltaX;				// Rotação da câmera OpenGL no eixo X
 
-	CTexto			*pTexto;	// Objeto que gerencia texto
-	CTexture		*pTextures;	// Objeto que gerencia texturas
-	CTimer			*pTimer;	// Objeto que gerencia o timer
+	CTexto* pTexto;	// Objeto que gerencia texto
+	CTexture* pTextures;	// Objeto que gerencia texturas
+	CTimer* pTimer;	// Objeto que gerencia o timer
 
 
 	int		iFPS;			// FPS and FPS Counter
@@ -60,29 +48,35 @@ private:
 	float fRenderPosY;
 	float fTimerPosY;
 
+	float fPosXZ;
 
-	// Definindo as propriedades da fonte de luz
-	GLfloat LightAmbient[4];
-	GLfloat LightDiffuse[4];
-	GLfloat LightSpecular[4];
-	GLfloat LightPosition[4];
+	bool fDirecao;
 
-	// Definindo as propriedades do material
+	// Definição das configurações do material do objeto (REFLEXÂO)
 	GLfloat MatAmbient[4];
 	GLfloat MatDiffuse[4];
 	GLfloat MatSpecular[4];
-	GLfloat MatShininess;
+	float MatShininess;
 
-	float fPosX;
-	float fPosY;
-	float fPosZ;
-	float fMovementFactor;
+	// Definição das configurações da fonte de luz1 (EMISSOR)
+	GLfloat LightAmbient1[4];
+	GLfloat LightDiffuse1[4];
+	GLfloat LightSpecular1[4];
+	GLfloat LightPosition1[4];
+	GLfloat LightSpotDir1[3];
 
-	GLUquadric *sphere1;
+	// Definição das configurações da fonte de luz2 (EMISSOR)
+	GLfloat LightAmbient2[4];
+	GLfloat LightDiffuse2[4];
+	GLfloat LightSpecular2[4];
+	GLfloat LightPosition2[4];
+	GLfloat LightSpotDir2[3];
 
-	CModel_3DS* pModel3DS_1;
-	CModel_3DS* pModel3DS_2;
-	CModel_3DS* pModel3DS_3;
-	
+	// Definição das configurações da fonte de luz3 (EMISSOR)
+	GLfloat LightAmbient3[4];
+	GLfloat LightDiffuse3[4];
+	GLfloat LightSpecular3[4];
+	GLfloat LightPosition3[4];
+	GLfloat LightSpotDir3[3];
 };
 
