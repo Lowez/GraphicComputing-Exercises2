@@ -40,25 +40,25 @@ CScene1::CScene1()
 	MatSpecular[0] = 1.0f; MatSpecular[1] = 1.0f; MatSpecular[2] = 1.0f; MatSpecular[3] = 1.0f;
 	MatShininess = 128.0f;
 
-	// Definição das configurações da fonte de luz1 (EMISSOR)
+	// Definição da luz vermelha
 	LightAmbient1[0] = 0.0f; LightAmbient1[1] = 0.0f; LightAmbient1[2] = 0.0f; LightAmbient1[3] = 1.0f;
 	LightDiffuse1[0] = 0.0f; LightDiffuse1[1] = 0.0f; LightDiffuse1[2] = 1.0f; LightDiffuse1[3] = 1.0f;
 	LightSpecular1[0] = 1.0f; LightSpecular1[1] = 1.0f; LightSpecular1[2] = 1.0f; LightSpecular1[3] = 1.0f;
-	LightPosition1[0] = 0.0f; LightPosition1[1] = 4.0f; LightPosition1[2] = fPosXZ; LightPosition1[3] = 1.0f;
+	LightPosition[0] = 0.0f; LightPosition[1] = 4.0f; LightPosition[2] = fPosXZ; LightPosition[3] = 1.0f;
 	LightSpotDir1[0] = 0.0f; LightSpotDir1[1] = 3.0f; LightSpotDir1[2] = 0.0f;
 
-	// Definição das configurações da fonte de luz2 (EMISSOR)
+	// Definição da luz verde
 	LightAmbient2[0] = 0.0f; LightAmbient2[1] = 0.0f; LightAmbient2[2] = 0.0f; LightAmbient2[3] = 1.0f;
 	LightDiffuse2[0] = 1.0f; LightDiffuse2[1] = 0.0f; LightDiffuse2[2] = 0.0f; LightDiffuse2[3] = 1.0f;
 	LightSpecular2[0] = 1.0f; LightSpecular2[1] = 1.0f; LightSpecular2[2] = 1.0f; LightSpecular2[3] = 1.0f;
-	LightPosition2[0] = fPosXZ; LightPosition2[1] = 4.0f; LightPosition2[2] = 0.0f; LightPosition2[3] = 1.0f;
+	LightPosition1[0] = fPosXZ; LightPosition1[1] = 4.0f; LightPosition1[2] = 0.0f; LightPosition1[3] = 1.0f;
 	LightSpotDir2[0] = 0.0f; LightSpotDir2[1] = 3.0f; LightSpotDir2[2] = 0.0f;
 
-	// Definição das configurações da fonte de luz3 (EMISSOR)
+	// Definição da luz azul
 	LightAmbient3[0] = 0.0f; LightAmbient3[1] = 0.0f; LightAmbient3[2] = 0.0f; LightAmbient3[3] = 1.0f;
 	LightDiffuse3[0] = 0.0f; LightDiffuse3[1] = 1.0f; LightDiffuse3[2] = 0.0f; LightDiffuse3[3] = 1.0f;
 	LightSpecular3[0] = 1.0f; LightSpecular3[1] = 1.0f; LightSpecular3[2] = 1.0f; LightSpecular3[3] = 1.0f;
-	LightPosition3[0] = fPosXZ; LightPosition3[1] = 4.0f; LightPosition3[2] = fPosXZ; LightPosition3[3] = 1.0f;
+	LightPosition2[0] = fPosXZ; LightPosition2[1] = 4.0f; LightPosition2[2] = fPosXZ; LightPosition2[3] = 1.0f;
 	LightSpotDir3[0] = 0.0f; LightSpotDir3[1] = 3.0f; LightSpotDir3[2] = 0.0f;
 }
 
@@ -124,23 +124,23 @@ int CScene1::DrawGLScene(void)	// Função que desenha a cena
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//                               DESENHA OS OBJETOS DA CENA (INÍCIO)
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Desenha lâmpada 1////
-	LightPosition1[0] = 0.0f;
+	// luiz 0
+	LightPosition[0] = 0.0f;
+	LightPosition[1] = 4.0f;
+	LightPosition[2] = fPosXZ;
+	LightPosition[3] = 1.0f;
+
+	// luiz 1
+	LightPosition1[0] = fPosXZ;
 	LightPosition1[1] = 4.0f;
-	LightPosition1[2] = fPosXZ;
+	LightPosition1[2] = 0.0f;
 	LightPosition1[3] = 1.0f;
 
-	// Desenha lâmpada 2////
+	// luz 2
 	LightPosition2[0] = fPosXZ;
 	LightPosition2[1] = 4.0f;
-	LightPosition2[2] = 0.0f;
+	LightPosition2[2] = fPosXZ;
 	LightPosition2[3] = 1.0f;
-
-	// Desenha lâmpada 3////
-	LightPosition3[0] = fPosXZ;
-	LightPosition3[1] = 4.0f;
-	LightPosition3[2] = fPosXZ;
-	LightPosition3[3] = 1.0f;
 
 	glEnable(GL_LIGHTING);
 
@@ -150,27 +150,27 @@ int CScene1::DrawGLScene(void)	// Função que desenha a cena
 	glMaterialfv(GL_FRONT, GL_SPECULAR, MatSpecular);
 	glMateriali(GL_FRONT, GL_SHININESS, MatShininess);
 
-	// Atribui os parâmetros da luz 0
+	// luz 0
 	glLightfv(GL_LIGHT0, GL_AMBIENT, LightAmbient1);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, LightDiffuse1);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, LightSpecular1);
-	glLightfv(GL_LIGHT0, GL_POSITION, LightPosition1);
+	glLightfv(GL_LIGHT0, GL_POSITION, LightPosition);
 	glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, LightSpotDir1);
 	glEnable(GL_LIGHT0);
 
-	// Atribui os parâmetros da luz 1
+	// luz 1
 	glLightfv(GL_LIGHT1, GL_AMBIENT, LightAmbient2);
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse2);
 	glLightfv(GL_LIGHT1, GL_SPECULAR, LightSpecular2);
-	glLightfv(GL_LIGHT1, GL_POSITION, LightPosition2);
+	glLightfv(GL_LIGHT1, GL_POSITION, LightPosition1);
 	glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, LightSpotDir2);
 	glEnable(GL_LIGHT1);
 
-	// Atribui os parâmetros da luz 1
+	// luiz 2
 	glLightfv(GL_LIGHT2, GL_AMBIENT, LightAmbient3);
 	glLightfv(GL_LIGHT2, GL_DIFFUSE, LightDiffuse3);
 	glLightfv(GL_LIGHT2, GL_SPECULAR, LightSpecular3);
-	glLightfv(GL_LIGHT2, GL_POSITION, LightPosition3);
+	glLightfv(GL_LIGHT2, GL_POSITION, LightPosition2);
 	glLightfv(GL_LIGHT2, GL_SPOT_DIRECTION, LightSpotDir3);
 	glEnable(GL_LIGHT2);
 

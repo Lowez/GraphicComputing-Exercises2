@@ -109,7 +109,7 @@ int CScene3::DrawGLScene(void)	// Função que desenha a cena
 
 	glColor4ub(255, 255, 255, 255);
 
-	// Desenha lâmpada  ////
+	// luz
 	LightPosition[0] = 0.0f;
 	LightPosition[1] = 5.0f;
 	LightPosition[2] = 5.0f;

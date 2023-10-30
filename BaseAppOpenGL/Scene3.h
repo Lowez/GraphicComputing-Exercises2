@@ -62,13 +62,11 @@ private:
 	GLfloat PosCubo2[4];
 	GLfloat PosCubo3[4];
 
-	// Definição das configurações da fonte de luz (EMISSOR)
 	GLfloat LightAmbient[4];
 	GLfloat LightDiffuse[4];
 	GLfloat LightSpecular[4];
 	GLfloat LightPosition[4];
 
-	// Definição das configurações do material do objeto (REFLEXÂO)
 	GLfloat MatAmbient[4];
 	GLfloat MatDiffuse[4];
 	GLfloat MatSpecular[4];

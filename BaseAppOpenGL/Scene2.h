@@ -1,4 +1,5 @@
 #pragma once
+#pragma once
 #include "SceneBaseClass.h"
 #include "CTexture.h"
 #include "CTimer.h"
@@ -11,18 +12,27 @@
 #include <iostream>
 #include <fstream>
 
+
 class CScene2 : public CSceneBaseClass
 {
 public:
 	CScene2();
 	~CScene2(void);
 
+
 	virtual void MouseMove(void);					// Tratamento de movimento do mouse
 	virtual void KeyPressed(void);					// Tratamento de teclas pressionadas
 	virtual void KeyDownPressed(WPARAM	wParam);	// Tratamento de teclas pressionadas
 	virtual int DrawGLScene(void);					// Função que desenha a cena
 
+	void Draw3DSGrid(float width, float length);
 	void DrawAxis();
+
+	void DrawCube();
+	void DrawPyramid();
+
+	glm::vec3 CalculateTriangleNormalVector(glm::vec3 v1, glm::vec3 v2, glm::vec3 v3);
+
 
 private:
 
@@ -52,23 +62,55 @@ private:
 	float fRenderPosY;
 	float fTimerPosY;
 
+	float fRotY;
+
+	float fPosX;
+	float fPosY;
+	float fPosZ;
+
+	float fPosX1;
+	float fPosY1;
+	float fPosZ1;
+
+	float fPosX2;
+	float fPosY2;
+	float fPosZ2;
+
 	float fRotYZ;
+
+
+	float fAngle = 10;
+	float fAngle1 = 50;
+	float fAngle2 = 90;
+	float fRadius = 20.0f;
 
 	unsigned char R;
 	unsigned char G;
 	unsigned char B;
 
+
 	CColor3 faceColor[38];
 
-	// Definição das configurações da fonte de luz (EMISSOR)
 	GLfloat LightAmbient[4];
 	GLfloat LightDiffuse[4];
 	GLfloat LightSpecular[4];
 	GLfloat LightPosition[4];
 
-	// Definição das configurações do material do objeto (REFLEXÂO)
+	GLfloat LightPosition1[4];
+	GLfloat LightDiffuse1[4];
+	GLfloat LightAmbient1[4];
+	GLfloat LightSpecular1[4];
+
+	GLfloat LightPosition2[4];
+	GLfloat LightDiffuse2[4];
+	GLfloat LightAmbient2[4];
+	GLfloat LightSpecular2[4];
+
 	GLfloat MatAmbient[4];
 	GLfloat MatDiffuse[4];
 	GLfloat MatSpecular[4];
 	float MatShininess;
+
+	CMaterial Gold;
 };
+

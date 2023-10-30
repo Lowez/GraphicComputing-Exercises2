@@ -575,13 +575,12 @@ void CTexture::ApplySkyBoxTexture(unsigned int textureID)
 }
 
 
-void CTexture::BeginSphereMapping(unsigned int textureID)
-{
+void CTexture::BeginSphereMapping(unsigned int textureID) {  
 	// Sphere Mapping
 	this->ApplyTexture(textureID);
 	//Sphere mapping and enable s & t texture generation
 	glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
-	glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+	glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);    
 	glEnable(GL_TEXTURE_GEN_S);
 	glEnable(GL_TEXTURE_GEN_T);
 }

@@ -52,31 +52,26 @@ private:
 
 	bool fDirecao;
 
-	// Definição das configurações do material do objeto (REFLEXÂO)
 	GLfloat MatAmbient[4];
 	GLfloat MatDiffuse[4];
 	GLfloat MatSpecular[4];
 	float MatShininess;
 
-	// Definição das configurações da fonte de luz1 (EMISSOR)
 	GLfloat LightAmbient1[4];
 	GLfloat LightDiffuse1[4];
 	GLfloat LightSpecular1[4];
-	GLfloat LightPosition1[4];
+	GLfloat LightPosition[4];
 	GLfloat LightSpotDir1[3];
 
-	// Definição das configurações da fonte de luz2 (EMISSOR)
 	GLfloat LightAmbient2[4];
 	GLfloat LightDiffuse2[4];
 	GLfloat LightSpecular2[4];
-	GLfloat LightPosition2[4];
+	GLfloat LightPosition1[4];
 	GLfloat LightSpotDir2[3];
 
-	// Definição das configurações da fonte de luz3 (EMISSOR)
 	GLfloat LightAmbient3[4];
 	GLfloat LightDiffuse3[4];
 	GLfloat LightSpecular3[4];
-	GLfloat LightPosition3[4];
+	GLfloat LightPosition2[4];
 	GLfloat LightSpotDir3[3];
 };
-
